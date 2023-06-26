@@ -94,7 +94,7 @@ export class AbstractionComponent {
       resize: true,
     };
     this.illo = new Illustration(options);
-    const hueOffset = 180;
+    const hueOffset = 70;
     const circleRange = this.CIRCLES - 1;
     const spreadHalf = this.SPREAD / 2;
 
@@ -108,7 +108,7 @@ export class AbstractionComponent {
         addTo: this.illo,
         translate: { z: zz },
       });
-      const hue = z * 5 + hueOffset;
+      const hue = z * 9 + hueOffset;
 
       circleIndices.forEach((x) => {
         const xx = translateMap(x);
@@ -122,7 +122,7 @@ export class AbstractionComponent {
             addTo: myGroup,
             diameter: this.CIRCLE_SIZE / 2,
             stroke: this.CIRCLE_SIZE * 1.5,
-            color: `hsla(${hue + x + y}, ${xp}, ${yp}, .5)`,
+            color: `hsla(${hue + x * 7 + y}, ${xp}, ${yp}, .5)`,
             translate: { x: xx, y: yy },
           };
 
