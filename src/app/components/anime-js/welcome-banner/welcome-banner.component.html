@@ -1,5 +1,6 @@
 <section class="welcome-section">
   <div id="grid">
+    <!-- Grid Items -->
     <div
       *ngFor="let item of gridItems; let i = index"
       class="grid-item"
@@ -8,8 +9,10 @@
     ></div>
   </div>
   <div class="welcome-section-in">
+    <!-- Welcome Text -->
     <h1 class="ml2" #titleWrapper *ngIf="showWelcomeText">Animation World!</h1>
 
+    <!-- Funny Button -->
     <button class="runaway-btn" (mouseover)="handleBtnMouseOver($event)">
       <span> Click Me !</span> <strong> 😀 </strong>
     </button>

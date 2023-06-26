@@ -22,12 +22,13 @@ export class WelcomeBannerComponent {
   ngOnInit(): void {
     this.getGridSize();
   }
-
+  // Listen for window resize event
   @HostListener('window:resize')
   onWindowResize(): void {
     this.getGridSize();
   }
 
+  // Handle the stagger animation
   handleStagger(index: number): void {
     anime({
       targets: '.grid-item',
@@ -39,6 +40,7 @@ export class WelcomeBannerComponent {
     });
   }
 
+  // Calculate the grid size based on the window size
   getGridSize(): void {
     this.columns = Math.floor(document.body.clientWidth / 50);
     this.rows = Math.floor(document.body.clientHeight / 50);
@@ -51,6 +53,7 @@ export class WelcomeBannerComponent {
     });
   }
 
+  // Generate a random color
   randomColor(): string {
     return '#' + Math.floor(Math.random() * 16777215).toString(16);
   }
@@ -60,6 +63,7 @@ export class WelcomeBannerComponent {
     this.animateWelcomeText();
   }
 
+  // Add spans to the title wrapper element
   addSpans() {
     const textWrapperElement = this.titleWrapperRef.nativeElement;
     if (textWrapperElement && textWrapperElement.textContent) {
@@ -69,21 +73,22 @@ export class WelcomeBannerComponent {
       );
     }
   }
-
+  // Handle button mouse over event
   handleBtnMouseOver(event: Event): void {
     const targetElement = event.target as HTMLElement;
-
+    // Generate random top and left positions
     const top = this.getRandomNumber(
       window.innerHeight - targetElement.offsetHeight
     );
     const left = this.getRandomNumber(
       window.innerWidth - targetElement.offsetWidth
     );
-
+    // Animate the movement of the target element
     this.animateMove(targetElement, 'left', left).play();
     this.animateMove(targetElement, 'top', top).play();
   }
 
+  // Animate the movement of an element
   animateMove = (element: Element, prop: string, pixels: number) =>
     anime({
       targets: element,
@@ -92,10 +97,11 @@ export class WelcomeBannerComponent {
       easing: 'easeOutCirc',
     });
 
+  // Generate a random number within a given range
   getRandomNumber = (num: number) => {
     return Math.floor(Math.random() * (num + 1));
   };
-
+  // Animate the welcome text
   animateWelcomeText() {
     const animation = anime
       .timeline({ loop: false })
@@ -118,6 +124,7 @@ export class WelcomeBannerComponent {
         delay: (el, i) => 70 * i + 1000,
       });
 
+    // remove animated text from the dom
     animation.finished.then(() => (this.showWelcomeText = false));
   }
 }

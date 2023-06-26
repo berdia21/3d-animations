@@ -1,6 +1,8 @@
 <header>
   <div class="container">
     <div class="dynamic-text" [routerLink]="['/']">
+      <!-- Dynamic Text Panel -->
+      <!-- loop for creating empty pannel divs -->
       <div
         class="pannel"
         *ngFor="
@@ -9,10 +11,22 @@
       ></div>
     </div>
 
-    <div></div>
-    <button [routerLink]="['/vr-scene']" class="link-btn">
+    <!--Move To Dice Page  -->
+    <button
+      [routerLink]="['/dice']"
+      routerLinkActive="router-link-active"
+      class="link-btn"
+    >
+      <span>Dice</span>
+    </button>
+
+    <!-- Move To VR Room Page  -->
+    <button
+      [routerLink]="['/vr-scene']"
+      routerLinkActive="router-link-active"
+      class="link-btn"
+    >
       <span>VR Room</span>
     </button>
-    <button [routerLink]="['/dice']" class="link-btn"><span>Dice</span></button>
   </div>
 </header>

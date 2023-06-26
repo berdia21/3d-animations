@@ -25,14 +25,17 @@ export class VrSceneComponent {
   loadCasinoModel: boolean = window.innerWidth > 900;
 
   ngAfterViewInit() {
+    // loader loading simulation timeout
     setTimeout(() => {
       this.fadeOutState = 'hidden';
     }, 5500);
 
+    // add click listener on slot machine to start/stop its animation
     AFRAME.registerComponent('cursor-listener', {
       init: function () {
         let el = this.el;
         el.addEventListener('click', function () {
+          // check if model is already animating and start or stop animation
           el.getAttribute('animation-mixer')
             ? el.removeAttribute('animation-mixer')
             : el.setAttribute(
@@ -44,6 +47,7 @@ export class VrSceneComponent {
     });
   }
 
+  // remove loader from the dom after loading animation is done
   onAnimationDone(event: any): void {
     if (event.toState === 'hidden') {
       this.showLoader = false;

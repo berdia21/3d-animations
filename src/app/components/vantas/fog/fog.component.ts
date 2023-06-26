@@ -23,7 +23,7 @@ export class FogComponent {
       lowlightColor: 0x62206,
       baseColor: 0x251515,
       blurFactor: 0.3,
-      speed: 0.4,
+      speed: 0.5,
       zoom: 0.6,
     });
   }

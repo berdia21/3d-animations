@@ -49,14 +49,17 @@ export class RollDiceComponent {
   }
 
   makeDice() {
+    // Create an Illustration instance
     this.illustration = new Illustration({
-      element: this.canvasRef.nativeElement,
+      element: this.canvasRef.nativeElement, // Attach to the canvas element
     });
 
+    // Create a new Anchor and add it to the illustration
     this.dice = new Anchor({
       addTo: this.illustration,
     });
 
+    // Create a new Group to hold the dice faces
     this.faces = new Group({
       addTo: this.dice,
     });
@@ -268,13 +271,13 @@ export class RollDiceComponent {
     // animate the object toward the input values
     anime({
       targets: this['rotation'],
-      // ! increment the input rotation with a random number of additional rotations
+      // increment the input rotation with a random number of additional rotations
       x: x + TAU * this.randomInt(),
       y: y + TAU * this.randomInt(),
       z: TAU * this.randomInt(),
       duration: 1500,
+
       // while the object is being updated update the rotation of the dice
-      // ! remember to update the graphic with the updateRenderGraph() method
       update: () => {
         this['dice'].rotate.x = this['rotation']['x'];
         this['dice'].rotate.y = this['rotation']['y'];

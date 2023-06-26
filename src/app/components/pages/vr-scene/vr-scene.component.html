@@ -1,15 +1,20 @@
+<!-- Disable VR mode UI -->
+<!-- Embed the scene within the HTML document -->
+<!-- Configure the renderer with antialiasing and color management -->
 <a-scene
   vr-mode-ui="enabled: false"
   embedded
   shadow="type: pcfsoft"
   renderer="antialias: true;  color-management: true"
 >
+  <!-- Define assets used in the scene -->
   <a-assets>
     <img id="grayGround" src="assets/textures/gray-ground.webp" />
     <img id="nightSky" src="assets/textures/night_360.webp" />
     <img id="wallTexture" src="assets/textures/wall-texture.jpg" />
   </a-assets>
 
+  <!-- Sky element with night sky texture -->
   <a-sky
     src="#nightSky"
     radius="25"
@@ -18,6 +23,7 @@
     rotation="0 120 0"
   ></a-sky>
 
+  <!-- Ground plane element with gray ground texture -->
   <a-plane
     position="0 0 0"
     rotation="-90 0 0"
@@ -28,6 +34,8 @@
     color="#777"
   >
   </a-plane>
+
+  <!-- Cylinder element(the wall) with wall texture -->
   <a-cylinder
     height="2.5"
     position="0 1.2 0"
@@ -40,6 +48,7 @@
     shadow="receive: true; cast: true"
   ></a-cylinder>
 
+  <!-- 3D Text with animation for the word "Welcome" -->
   <a-entity
     text-geometry="value: Welcome; bevelEnabled: true; bevelSize: 0.01; bevelThickness: 0.04; curveSegments: 50; weight: bold"
     material=" metalness: 0.2; repeat: 1 1"
@@ -50,6 +59,8 @@
     animation="property: position; from:-3.17 10 -4; to: -3.17 0.01 -4; dur: 500; easing: easeOutElastic; delay: 7000"
   >
   </a-entity>
+
+  <!-- 3D Text entity with the word "To" and animation for position -->
   <a-entity
     text-geometry="value: To; bevelEnabled: true; bevelSize: 0.01; bevelThickness: 0.04; curveSegments: 50; weight: bold"
     material=" metalness: 0.2; repeat: 1 1"
@@ -59,6 +70,8 @@
     animation="property: position; from: 0 10 -4; to: 0 0.01 -4; dur: 500; easing: easeOutElastic; delay: 7500"
   >
   </a-entity>
+
+  <!-- Entity with a 3D model of a Crocobet logo and animation for position -->
   <a-entity
     gltf-model="url(assets/3d-models/croco-logo.glb)"
     response-type="arraybuffer"
@@ -70,6 +83,7 @@
   ></a-entity>
 
   <!-- this model is too heavy for mobile devices :/ -->
+  <!-- render of this element is conditional based on the "loadCasinoModel" flag -->
   <a-entity
     *ngIf="loadCasinoModel"
     gltf-model="url(assets/3d-models/casino.glb)"
@@ -78,6 +92,8 @@
     position="0.29 -0.1 -8"
     animation-mixer="clip:Take 001"
   ></a-entity>
+
+  <!-- 3D model of two slot machines -->
   <a-entity
     gltf-model="url(assets/3d-models/slot-machine.glb)"
     scale="0.011 0.011 0.011"
@@ -86,6 +102,7 @@
     rotation="0 -30 0"
   ></a-entity>
 
+  <!-- Entity with a 3D model of one animated slot machine and a text entity as a child -->
   <a-entity
     gltf-model="url(assets/3d-models/slot_machine_one.glb)"
     scale="0.15 0.15 0.15"
@@ -108,6 +125,7 @@
     animation="property: rotation; from: 0 0 0; to: 0 360 0; dur: 45000; easing:	linear; loop: true; direction: alternate"
     position="0 -4 0"
   >
+    <!-- 3D model of star galaxy -->
     <a-entity
       gltf-model="url(assets/3d-models/space.glb)"
       position="0 0 0"
@@ -115,12 +133,12 @@
     ></a-entity>
   </a-entity>
 
+  <!-- Camera entity with position, field of view, and control settings -->
   <a-entity position="1 0 4">
-    <!-- wasd-controls-enabled="false" -->
     <a-camera
       position="0 1.3 -3"
       fov="60"
-      wasd-controls="acceleration: 50;"
+      wasd-controls="acceleration: 40;"
       look-controls="pointerLockEnabled: true"
     >
       <a-entity
@@ -129,9 +147,12 @@
         geometry="primitive: sphere; radius: 0.005"
         material="color: #1caf4b; shader: flat"
       >
-      </a-entity> </a-camera
-  ></a-entity>
+      </a-entity>
+    </a-camera>
+  </a-entity>
 </a-scene>
+
+<!-- Custom loader component with fade-out animation -->
 <app-loader-two
   *ngIf="showLoader"
   [@fadeOut]="fadeOutState"

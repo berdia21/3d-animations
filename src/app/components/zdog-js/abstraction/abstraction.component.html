@@ -8,9 +8,6 @@
     (mouseup)="stopDragging()"
     (mousemove)="onDrag($event)"
     (mouseleave)="stopDragging()"
-    (touchstart)="startDragging($event)"
-    (touchend)="stopDragging()"
-    (touchmove)="onDrag($event)"
   >
     <canvas #canvas class="canvas"></canvas>
   </div>

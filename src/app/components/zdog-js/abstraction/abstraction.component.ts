@@ -16,10 +16,12 @@ export class AbstractionComponent {
   @ViewChild('parentCanvas', { static: false })
   parentCanvasRef!: ElementRef<HTMLCanvasElement>;
 
+  // Constants
   CIRCLES = 9;
-  CIRCLE_SIZE = window.innerWidth < 900 ? 5 : 9;
-  SPREAD = window.innerWidth < 900 ? 200 : 300;
+  CIRCLE_SIZE = window.innerWidth < 900 ? 5 : 9; // Adjust circle size based on screen width
+  SPREAD = window.innerWidth < 900 ? 200 : 300; // Adjust spread based on screen width
 
+  // Variables
   groups: Group[] = [];
   start = 0;
   progress = 0;
@@ -27,18 +29,21 @@ export class AbstractionComponent {
   SIN = Math.sin;
   FLOOR = Math.floor;
   hue!: number;
-  MAP = function (
+
+  // Helper function for mapping values
+  MAP = (
     x: number,
     in_min: number,
     in_max: number,
     out_min: number,
     out_max: number
-  ): number {
+  ): number => {
     return ((x - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
   };
 
   illo!: Illustration;
 
+  // Dragging variables and methods
   isDragging = false;
   initialX = 0;
   initialY = 0;
@@ -59,6 +64,7 @@ export class AbstractionComponent {
   }
 
   returnToCenter() {
+    // Use anime.js library to animate the return to center
     anime({
       targets: '.rotate-div',
       translateX: '0px',
@@ -70,6 +76,7 @@ export class AbstractionComponent {
   }
 
   moveFromCenter(offsetX: number, offsetY: number) {
+    // Use anime.js library to move from the center
     anime({
       targets: '.rotate-div',
       translateX: `${offsetX}px`,
@@ -102,6 +109,7 @@ export class AbstractionComponent {
     const translateMap = (value: number) =>
       this.MAP(value, 0, circleRange, -spreadHalf, spreadHalf);
 
+    // Create groups of ellipses based on specified parameters
     for (let z = 0; z < this.CIRCLES * 2; z++) {
       const zz = this.MAP(z, 0, this.CIRCLES * 2, -spreadHalf, spreadHalf);
       const myGroup = new Group({
@@ -133,6 +141,7 @@ export class AbstractionComponent {
       this.groups.push(myGroup);
     }
   }
+
   render = () => {
     if (!this.animating) return;
 
@@ -140,10 +149,12 @@ export class AbstractionComponent {
     const { illo, groups } = this;
     const rotateScale = 1;
 
+    // Calculate rotation angles based on time
     const rotationX = this.MAP(this.SIN(t / 1000), -1, 1, -1, 1) * rotateScale;
     const rotationY = this.MAP(this.SIN(t / 2000), -1, 1, -2, 2) * rotateScale;
     const rotationZ = this.MAP(this.SIN(t / 1000), -1, 1, -2, 2) * rotateScale;
 
+    // Apply rotations to the illustration and groups
     illo.rotate.x = rotationX;
     illo.rotate.y = rotationY;
     illo.rotate.z = rotationZ;
@@ -155,6 +166,7 @@ export class AbstractionComponent {
     illo.updateRenderGraph();
     this.progress = t;
 
+    // Call the render function recursively using requestAnimationFrame
     requestAnimationFrame(this.render);
   };
 
