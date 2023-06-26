@@ -1,4 +1,5 @@
 @import '../../../../scss/abstracts/variables';
+@import '../../../../scss/abstracts/mixins';
 
 .roll-dice {
   display: flex;
@@ -7,8 +8,12 @@
   flex-direction: column;
 
   h1 {
-    font-size: 3rem;
+    font-size: 50px;
+    text-align: center;
 
+    @include upto-md {
+      font-size: 30px;
+    }
   }
 
   canvas {

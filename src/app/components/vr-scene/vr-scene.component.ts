@@ -22,6 +22,7 @@ import { LoaderTwoComponent } from '../loaders/loader-two/loader-two.component';
 export class VrSceneComponent {
   showLoader: boolean = true;
   fadeOutState = 'visible';
+  loadCasinoModel: boolean = window.innerWidth > 900;
 
   ngOnInit(): void {
     setTimeout(() => {

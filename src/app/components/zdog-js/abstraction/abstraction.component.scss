@@ -1,9 +1,9 @@
 @import '../../../../scss/abstracts/variables';
+@import '../../../../scss/abstracts/mixins';
 
 .abstraction {
   align-items: center;
   display: flex;
-
   justify-content: center;
   margin: 100px 0;
   flex-direction: column;
@@ -12,10 +12,21 @@
   min-height: 600px;
   width: 100vw;
 
+  @include upto-md {
+    overflow-x: hidden;
+    max-height: 600px;
+  }
+
   .canvas {
     width: 50vw;
     height: 50vh;
     min-height: 500px;
+
+    @include upto-lg {
+      width: auto;
+      height: 400px;
+      min-height: auto;
+    }
   }
 
   .play-btn {
@@ -33,6 +44,7 @@
     left: 50%;
     top: 50px;
     transform: translateX(-50%);
+    min-width: 170px;
 
     &:hover {
       background-color: rgba(#fff, 0.1);

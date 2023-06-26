@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Ellipse, Group, Illustration } from 'zdog';
 import anime from 'animejs/lib/anime.es.js';
@@ -17,8 +17,8 @@ export class AbstractionComponent {
   parentCanvasRef!: ElementRef<HTMLCanvasElement>;
 
   CIRCLES = 9;
-  CIRCLE_SIZE = 9;
-  SPREAD = 300;
+  CIRCLE_SIZE = window.innerWidth < 900 ? 5 : 9;
+  SPREAD = window.innerWidth < 900 ? 200 : 300;
 
   groups: Group[] = [];
   start = 0;
