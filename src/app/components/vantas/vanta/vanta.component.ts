@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import HALO from 'vanta/dist/vanta.halo.min';
+import { ObjectsComponent } from '../../zdog-js/objects/objects.component';
 
 @Component({
   selector: 'app-vanta',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ObjectsComponent],
   templateUrl: './vanta.component.html',
   styleUrls: ['./vanta.component.scss'],
 })
