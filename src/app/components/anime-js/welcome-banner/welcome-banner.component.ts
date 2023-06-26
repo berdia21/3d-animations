@@ -56,6 +56,11 @@ export class WelcomeBannerComponent {
   }
 
   ngAfterViewInit(): void {
+    this.addSpans();
+    this.animateWelcomeText();
+  }
+
+  addSpans() {
     const textWrapperElement = this.titleWrapperRef.nativeElement;
     if (textWrapperElement && textWrapperElement.textContent) {
       textWrapperElement.innerHTML = textWrapperElement.textContent?.replace(
@@ -63,8 +68,6 @@ export class WelcomeBannerComponent {
         "<span class='letter'>$&</span>"
       );
     }
-
-    this.animateWelcomeText();
   }
 
   handleBtnMouseOver(event: Event): void {
@@ -112,7 +115,7 @@ export class WelcomeBannerComponent {
         translateX: 70,
         easing: 'easeInExpo',
         duration: 1000,
-        delay: (el, i) => 70 * i + 2500,
+        delay: (el, i) => 70 * i + 1000,
       });
 
     animation.finished.then(() => (this.showWelcomeText = false));

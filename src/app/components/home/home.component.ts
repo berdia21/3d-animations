@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { WelcomeBannerComponent } from '../anime-js/welcome-banner/welcome-banner.component';
 import { RollDiceComponent } from '../zdog-js/roll-dice/roll-dice.component';
-import { PlanetComponent } from '../zdog-js/planet/planet.component';
+import { AbstractionComponent } from '../zdog-js/abstraction/abstraction.component';
+import { VantaComponent } from '../vanta/vanta.component';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,8 @@ import { PlanetComponent } from '../zdog-js/planet/planet.component';
     RouterModule,
     WelcomeBannerComponent,
     RollDiceComponent,
-    PlanetComponent,
+    AbstractionComponent,
+    VantaComponent,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
