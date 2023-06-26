@@ -106,7 +106,7 @@ export class WelcomeBannerComponent {
         translateZ: 0,
         easing: 'easeOutExpo',
         duration: 900,
-        delay: (el, i) => 70 * i,
+        delay: (el, i) => 70 * i + 6500,
       })
       .add({
         targets: '.ml2 .letter',

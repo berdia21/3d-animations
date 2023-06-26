@@ -24,16 +24,11 @@ export class VrSceneComponent {
   fadeOutState = 'visible';
   loadCasinoModel: boolean = window.innerWidth > 900;
 
-  ngOnInit(): void {
+  ngAfterViewInit() {
     setTimeout(() => {
       this.fadeOutState = 'hidden';
-    }, 4500);
-    setTimeout(() => {
-      this.showLoader = false;
-    }, 5000);
-  }
+    }, 5500);
 
-  ngAfterViewInit() {
     AFRAME.registerComponent('cursor-listener', {
       init: function () {
         let el = this.el;
@@ -47,5 +42,11 @@ export class VrSceneComponent {
         });
       },
     });
+  }
+
+  onAnimationDone(event: any): void {
+    if (event.toState === 'hidden') {
+      this.showLoader = false;
+    }
   }
 }

@@ -1,4 +1,5 @@
 @import '../../../../scss/abstracts/variables';
+@import '../../../../scss/abstracts/mixins';
 
 .loader {
   display: flex;
@@ -14,6 +15,10 @@
   left: 0;
 
   svg {
+    @include upto-md {
+      max-width: 70%;
+    }
+
     .logo-path {
       fill-opacity: 1;
       stroke-dasharray: 30;
