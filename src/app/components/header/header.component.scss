@@ -1,13 +1,18 @@
 @import '../../../scss/abstracts/variables';
 @import '../../../scss/abstracts/mixins';
 
-.text {
+.dynamic-text {
   display: flex;
   perspective: 500px;
   align-items: center;
   height: 100%;
   justify-content: center;
   cursor: pointer;
+  width: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
 
   @include upto-sm {
     justify-content: flex-start
@@ -17,6 +22,9 @@
 .container {
   position: relative;
   height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .pannel {
@@ -106,14 +114,11 @@ header {
   border: none;
   outline: none;
   cursor: pointer;
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
   overflow: hidden;
   border-radius: 26px;
-  width: 120px;
+  margin-left: 20px;
   height: 40px;
+  position: relative;
 
   &::before {
     content: "";
@@ -126,10 +131,11 @@ header {
     background: linear-gradient(to right, $color-green-primary, #21f3d4);
     background-clip: padding-box;
     border-radius: 26px;
+    z-index: 1;
   }
 
   &::after {
-    content: "VR Room";
+    content: "";
     color: #fff;
     display: flex;
     justify-content: center;
@@ -146,6 +152,12 @@ header {
     background-clip: padding-box;
     border-radius: 26px;
     transition: all 0.25s ease-in-out;
+  }
+
+  span {
+    z-index: 5;
+    color: #fff;
+    position: relative;
   }
 
   &:hover {

@@ -16,7 +16,7 @@ export class VantaComponent {
       el: '#vantaWrapper', // element selector string or DOM object reference
       mouseControls: true,
       touchControls: true,
-      gyroControls: true,
+      gyroControls: false,
       minHeight: 200.0,
       minWidth: 200.0,
       amplitudeFactor: 3.0,

@@ -1,6 +1,6 @@
 <header>
   <div class="container">
-    <div class="text" [routerLink]="['/']">
+    <div class="dynamic-text" [routerLink]="['/']">
       <div
         class="pannel"
         *ngFor="
@@ -9,6 +9,10 @@
       ></div>
     </div>
 
-    <button [routerLink]="['/vr-scene']" class="link-btn"></button>
+    <div></div>
+    <button [routerLink]="['/vr-scene']" class="link-btn">
+      <span>VR Room</span>
+    </button>
+    <button [routerLink]="['/dice']" class="link-btn"><span>Dice</span></button>
   </div>
 </header>

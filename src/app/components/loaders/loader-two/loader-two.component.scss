@@ -54,18 +54,6 @@
 
 .cls-3 {
   fill: #bbb;
-  opacity: 0;
-  animation: clsAnim 4s linear forwards;
-
-  @keyframes clsAnim {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
-  }
 }
 
 .cls-4 {

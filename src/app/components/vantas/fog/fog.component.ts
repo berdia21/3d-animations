@@ -13,9 +13,9 @@ export class FogComponent {
   ngAfterViewInit(): void {
     FOG({
       el: '#fogWrapper',
-      mouseControls: false,
+      mouseControls: true,
       touchControls: false,
-      gyroControls: true,
+      gyroControls: false,
       minHeight: 200.0,
       minWidth: 200.0,
       highlightColor: 0x227047,
