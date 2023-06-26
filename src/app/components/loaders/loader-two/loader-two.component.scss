@@ -1,0 +1,77 @@
+@import '../../../../scss/abstracts/variables';
+
+.loader-two {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: $color-blue-dark;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  padding: 30px 10%;
+
+  svg {
+    width: 70%;
+    margin: 0 auto;
+
+    .line {
+      fill-opacity: 1;
+      stroke-dasharray: 93;
+      stroke-dashoffset: 93;
+      stroke: $color-green-secondary;
+      stroke-width: 5px;
+      opacity: 1;
+      animation: logoAnim 4s ease-in-out forwards;
+    }
+  }
+
+  @keyframes logoAnim {
+    from {
+      stroke-dasharray: 93;
+      stroke-dashoffset: 93;
+    }
+
+    to {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 20;
+    }
+  }
+}
+
+.cls-1,
+.cls-2 {
+  fill: none;
+}
+
+.cls-2 {
+  stroke: $color-green-secondary;
+  stroke-width: 4.32px;
+}
+
+.cls-3 {
+  fill: #bbb;
+  opacity: 0;
+  animation: clsAnim 4s linear forwards;
+
+  @keyframes clsAnim {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+.cls-4 {
+  fill: url(#_10_lpi_60_2);
+}
+
+.cls-5 {
+  fill: url(#_10_lpi_60_2-3);
+}
